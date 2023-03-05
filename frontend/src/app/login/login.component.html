@@ -1,0 +1,62 @@
+<div class="login">
+    <div class="logo">
+        <img src="assets/images/bleach.png">
+    </div>
+    <form [formGroup]="loginForm" #loginF="ngForm" *ngIf="isLogin">
+        <div class="portion">
+            <label for="username">Username</label>
+            <input 
+                type="text"
+                id="username"
+                name="username"
+                formControlName="username"
+            />
+        </div>
+        <div class="portion">
+            <label for="password">Password</label>
+            <input 
+                type="text"
+                id="password"
+                name="password"
+                formControlName="password"
+            />
+        </div>
+        <div class="portion">
+            <p>Don't have an account? <span>Register here!</span></p>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+    <form [formGroup]="registerForm" #loginF="ngForm" *ngIf="!isLogin">
+        <div class="portion">
+            <label for="username">Email</label>
+            <input 
+                type="text"
+                id="email"
+                name="email"
+                formControlName="email"
+            />
+        </div>
+        <div class="portion">
+            <label for="username">Username</label>
+            <input 
+                type="text"
+                id="username"
+                name="username"
+                formControlName="username"
+            />
+        </div>
+        <div class="portion">
+            <label for="password">Password</label>
+            <input 
+                type="text"
+                id="password"
+                name="password"
+                formControlName="password"
+            />
+        </div>
+        <div class="portion">
+            <p>Already have an account? <span>Login here!</span></p>
+            <button type="submit" [disabled]="!registerForm.valid">Login</button>
+        </div>
+    </form>
+</div>

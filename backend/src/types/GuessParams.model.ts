@@ -1,0 +1,1 @@
+export type GuessParams = Array<{ [parameter: string]: { evaluation: string, value: number | string } }>;

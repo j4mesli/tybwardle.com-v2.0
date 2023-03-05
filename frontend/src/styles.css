@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Bleach';
+    src:
+            url('assets/fonts/ITCAvantGardeStd-XLtCn.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-BkCn.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-BkCnObl.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-BkObl.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-Bold.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-BoldCn.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-MdObl.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-XLt.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-XLtCn.woff') format('woff'),
+            url('assets/fonts/ITCAvantGardeStd-XLtCnObl.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, #root {
+    height: 100%;
+    /* Scrollbar Styles for Mozilla (Literally only Firefox) */
+    scrollbar-width: thin;
+    scrollbar-color: #8d8d8d #ccc;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Bleach, sans-serif;
+    color: #eee;
+    font-size: 1.4em;
+    margin: 0;
+    background: #202b38;
+}
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Scrollbar Styles for Webkit (Literally everything else) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #8d8d8d;
+    border-radius: 6px;
+}
