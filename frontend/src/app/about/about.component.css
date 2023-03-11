@@ -1,0 +1,39 @@
+.about {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about h1 {
+    color: #dfd4c7;
+}
+.about .header, .about .header strong {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+.about .text {
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 18px;
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.about .text a {
+    color: #41adff;
+    text-decoration: none;
+    transition: .1s ease-in-out;
+}
+.about .text a:hover {
+    text-decoration: underline;
+}

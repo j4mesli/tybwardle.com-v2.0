@@ -1,0 +1,102 @@
+.login {
+    height: 500px;
+    width: 500px;
+    margin: 8% auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 10px;
+    color: #333;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.login p {
+    font-size: 16px;
+}
+.login .portion span {
+    color: #3995db;
+    cursor: pointer;
+}
+.login p.error, span.error, .login p.error-abs span {
+    color: #f00;
+}
+.login p.error-abs {
+    color: #f00;
+    font-weight: 600;
+    position: absolute;
+    top: -40%;
+    text-align: center;
+}
+.login p.error-abs#password-validation {
+    top: 60%
+}
+.login form, .login .portion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+    width: 100%;
+    position: relative;
+}
+.login .logo {
+    position: absolute;
+    top: 10%;
+}
+.login form {
+    position: absolute;
+    top: 12%;
+    height: 100%;
+    width: 100%;
+}
+.login form input[type="email"], .login form input[type="text"], .login form input[type="password"] {
+    width: 60%;
+    font-size: 18px;
+    height: 22px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: none;
+}
+.login form button[type="submit"] {
+    width: 60%;
+    font-size: 18px;
+    height: 30px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3995db;
+    color: #fff;
+    cursor: pointer;
+}
+.login form .disabled {
+    background-color: #ccc;
+    color: #333;
+    cursor: not-allowed;
+}
+.login form button[type="submit"]:hover {
+    background-color: #2d7db1;
+}
+
+/* mobile styles */
+
+@media (max-width: 750px) {
+    .login {
+        width: 100%;
+        height: calc(width);
+        max-width: 500px;
+    }
+    .login form input[type="email"], .login form input[type="text"], .login form input[type="password"] {
+        width: 80%;
+    }
+    .login p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .login form button[type="submit"] {
+        width: 80%;
+    }
+}

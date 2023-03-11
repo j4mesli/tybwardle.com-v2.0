@@ -1,0 +1,45 @@
+.home {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.home .heading {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home .heading h1 {
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 0;
+}
+.home .demo-svg {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home .login-prompt {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home .login-prompt span {
+    cursor: pointer;
+    color: #41adff;
+    transition: 0.2s ease-in-out;
+}
+.home .login-prompt span:hover {
+    color: #1e8bd8;
+}

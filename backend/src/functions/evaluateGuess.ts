@@ -1,9 +1,9 @@
 import { Character } from "../types/Character.model";
 import { GuessParams } from "../types/GuessParams.model";
-import { evaluateGuessString } from "./evaluateGuessString";
+import { evaluateResultString } from "./evaluateResultString";
 
-export const evaluateGuess = (ans: Character, guess: Character, guessString: string): [GuessParams, string] => {
-    const newGuessString = evaluateGuessString(ans, guess, guessString);
+export const evaluateGuess = (ans: Character, guess: Character, resultString: string): [GuessParams, string] => {
+    const newResultString = evaluateResultString(ans, guess, resultString);
     const proximity: GuessParams = [
         { name: { 
             evaluation: ans.name === guess.name ? 'correct' : 'incorrect', 
@@ -15,7 +15,7 @@ export const evaluateGuess = (ans: Character, guess: Character, guessString: str
         } },
         { affiliation: { 
             evaluation: ans.affiliation === guess.affiliation ? 'correct' : 'incorrect', 
-            value: guess.race 
+            value: guess.affiliation 
         } },
         { status: { 
             evaluation: ans.status === guess.status ? 'correct' : 'incorrect', 
@@ -30,5 +30,5 @@ export const evaluateGuess = (ans: Character, guess: Character, guessString: str
             value: guess.weight,
         } },
     ];
-    return [proximity, newGuessString];
+    return [proximity, newResultString];
 }

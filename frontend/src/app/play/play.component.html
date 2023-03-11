@@ -1,1 +1,54 @@
-<p>play works!</p>
+<div class="play">
+    <div class="content">
+        <h3 *ngIf="canPlay">Guess that <em>BLEACH</em> character!</h3>
+        <h4 *ngIf="canPlay">You have <span class="guessCounter">{{ 10-guessCounter }}</span> guesses left!</h4>
+        <form autocomplete="off" [formGroup]="guessForm" #guessF="ngForm" *ngIf="!isLoading && canPlay" (ngSubmit)="submitForm()">
+            <label for="guessString">Enter your guess here:</label>
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="guessString"
+                    name="guessString"
+                    formControlName="guessString"
+                >
+                <button type="submit" [className]="!guessForm.valid ? 'disabled' : ''" [disabled]="!guessForm.valid">
+                    <span class="material-symbols-outlined">trending_flat</span>
+                </button>
+            </div>
+        </form>
+        <div class="dropdown" *ngIf="showMatches && matches.length > 0">
+            <div class="item" *ngFor="let match of matches; let i = index; first as isFirst; last as isLast;">
+                {{ match.name }}
+            </div>
+        </div>
+        <div class="showResult" *ngIf="!canPlay && answer">
+            <h2>Game Over!</h2>
+            <h5>The answer was:</h5>
+            <div class="card">
+                <img src="assets/images/{{ answer.image }}.jpg">
+                <h4 style="color: #32ad32">{{ answer.name }}</h4>
+            </div>
+            <h5 class="share" (click)="copyString()">Share your results here!</h5>
+        </div>
+        <div class="guesses" *ngIf="canPlay">
+            <div class="guess" style="border-bottom: 1px solid #f6f6f6; margin-bottom: 10px; padding-bottom: 0px;">
+                <div class="column">IMAGE</div>
+                <div class="column">NAME</div>
+                <div class="column">RACE</div>
+                <div class="column">AFFILIATION</div>
+                <div class="column">STATUS</div>
+                <div class="column">HEIGHT</div>
+                <div class="column">WEIGHT</div>
+            </div>
+            <div class="guess for" *ngFor="let guess of guesses; let i = index; first as isFirst; last as isLast;">
+                <div class="column"><img src="assets/images/{{ guess.character.image }}.jpg" /></div>
+                <div class="column" [style]="{ color: guess.proximity[0].name.evaluation === 'incorrect' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[0].name.value }}</div>
+                <div class="column" [style]="{ color: guess.proximity[1].race.evaluation === 'incorrect' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[1].race.value }}</div>
+                <div class="column" [style]="{ color: guess.proximity[2].affiliation.evaluation === 'incorrect' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[2].affiliation.value }}</div>
+                <div class="column" [style]="{ color: guess.proximity[3].status.evaluation === 'incorrect' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[3].status.value }}</div>
+                <div class="column" [style]="{ color: guess.proximity[4].height.evaluation !== 'correct' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[4].height.value !== 0 ? guess.proximity[4].height.value + ' cm' : 'N/A' }} {{ guess.proximity[4].height.evaluation === "incorrect" ? "❌" : guess.proximity[4].height.evaluation === "less" ? "🔻" : guess.proximity[4].height.evaluation === "more" ? "🔺" : "" }}</div>
+                <div class="column" [style]="{ color: guess.proximity[5].weight.evaluation !== 'correct' ? '#cc3300' : '#32cd32' }">{{ guess.proximity[5].weight.value !== 0 ? guess.proximity[5].weight.value + ' kg' : 'N/A' }} {{ guess.proximity[5].weight.evaluation === "incorrect" ? "❌" : guess.proximity[5].weight.evaluation === "less" ? "🔻" : guess.proximity[5].weight.evaluation === "more" ? "🔺" : "" }}</div>
+            </div>
+        </div>
+    </div>
+</div>

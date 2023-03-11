@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import { Pool } from 'pg';
+import { CookieHeaders } from '../types/CookieHeaders.model';
 
 export const handleRegistration = async (req: Request, res: Response, pool: Pool, authKEY: string) => {
     const invalidRegistration = { error: "Invalid username/password/email provided!", message: "", code: 400 };
-    const validRegistration = { error: "", message: `User ${ req.query.username } at email ${ req.query.email } was successfully registered!`, code: 200 };
+    const validRegistration = { error: "", message: `User ${ req.query.username } at email ${ req.query.email } was successfully registered!`, auth: {} as CookieHeaders, code: 200 };
 
     if (req.query.username && req.query.password && req.query.email && req.headers['auth'] === authKEY) {
         const username = req.query.username as string;
@@ -21,8 +22,7 @@ export const handleRegistration = async (req: Request, res: Response, pool: Pool
                 VALUES ('${ username }', '${ email }', '${ password }')
                 RETURNING *            
             `);
-            console.log(response);
-            res.send(validRegistration);
+            res.send({ ...validRegistration, auth: { auth: authKEY, user: username } });
         }
         else {
             const usernames = users.map(user => user.username);

@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import { Pool } from 'pg';
+import { CookieHeaders } from '../types/CookieHeaders.model';
 
 export const handleAuth = async (req: Request, res: Response, pool: Pool, authKEY: string) => {
     const invalidLogin = { error: "Invalid Login: Invalid Username And/Or Password Provided!", message: "", code: 401 };
-    const validLogin = { error: "", message: "User authenticated, welcome!", code: 200 };
+    const validLogin = { error: "", message: "User authenticated, welcome!", auth: {} as CookieHeaders, code: 200 };
 
     if (req.query.username && req.query.password && req.headers['auth'] === authKEY) {
         const username = req.query.username;
@@ -15,7 +16,7 @@ export const handleAuth = async (req: Request, res: Response, pool: Pool, authKE
         const response = await pool.query(`SELECT * FROM user_information where username='${ username }'`);
         if (response.rows.length > 0) {
             if (response.rows[0]['password'] === password) {
-                res.status(200).send(validLogin);
+                res.status(200).send({ ...validLogin, auth: { auth: authKEY, user: username } });
             }
             else {
                 res.status(401).send(invalidLogin);

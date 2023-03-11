@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { PlayComponent } from './play/play.component';
 import { StatsComponent } from './stats/stats.component';
+import { LoadingCircleComponent } from './loading-circle/loading-circle.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { StatsComponent } from './stats/stats.component';
     HeaderComponent,
     LoginComponent,
     PlayComponent,
-    StatsComponent
+    StatsComponent,
+    LoadingCircleComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

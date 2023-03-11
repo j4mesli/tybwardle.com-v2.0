@@ -2,7 +2,11 @@
     <div class="logo">
         <img src="assets/images/bleach.png">
     </div>
-    <form [formGroup]="loginForm" #loginF="ngForm" *ngIf="isLogin">
+    <app-loading-circle *ngIf="isLoading"></app-loading-circle>
+    <form [formGroup]="loginForm" #loginF="ngForm" *ngIf="isLogin && !isLoading" (ngSubmit)="submitForm('login')">
+        <p class="error" *ngIf="loginError">
+            {{ loginError.error === 'INVALID REQUEST PROVIDED' ? 'ERROR: 401 Unauthorized!' : 'ERROR: Your username or password was incorrect!' }}
+        </p>
         <div class="portion">
             <label for="username">Username</label>
             <input 
@@ -15,48 +19,68 @@
         <div class="portion">
             <label for="password">Password</label>
             <input 
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 formControlName="password"
             />
         </div>
         <div class="portion">
-            <p>Don't have an account? <span>Register here!</span></p>
-            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+            <p>Don't have an account? <span (click)="isLogin = !isLogin">Register here!</span></p>
+            <button type="submit" [className]="!loginForm.valid ? 'disabled' : ''" [disabled]="!loginForm.valid">Login</button>
         </div>
     </form>
-    <form [formGroup]="registerForm" #loginF="ngForm" *ngIf="!isLogin">
+    <form id="registrar" [formGroup]="registerForm" #registerF="ngForm" *ngIf="!isLogin && !isLoading" (ngSubmit)="submitForm('register')">
         <div class="portion">
+            <p class="error-abs" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+                Please enter a valid email address!
+            </p>
             <label for="username">Email</label>
             <input 
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 formControlName="email"
+                email
+                required 
             />
         </div>
         <div class="portion">
+            <p class="error-abs" *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
+                <span *ngIf="registerForm.controls['username'].errors?.['minlength']">Username must be at least 6 characters long!</span>
+                <span *ngIf="registerForm.controls['username'].errors?.['required']">Please enter a valid username!</span>
+            </p>
             <label for="username">Username</label>
             <input 
                 type="text"
                 id="username"
                 name="username"
                 formControlName="username"
+                required 
+                minlength="6" 
             />
         </div>
         <div class="portion">
+            <p class="error-abs" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+                <span *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters long!</span>
+                <span *ngIf="registerForm.controls['password'].errors?.['required']">Please enter a valid password!</span>
+            </p>
+            <p class="error-abs" id="password-validation" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+                <span *ngIf="registerForm.controls['password'].errors?.['pattern']">Password must contain at least one upper and lowercase letter, one number, and one special character!</span>
+            </p>
             <label for="password">Password</label>
             <input 
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 formControlName="password"
+                minlength="8"
+                required 
             />
         </div>
         <div class="portion">
-            <p>Already have an account? <span>Login here!</span></p>
-            <button type="submit" [disabled]="!registerForm.valid">Login</button>
+            <p>Already have an account? <span (click)="isLogin = !isLogin">Login here!</span></p>
+            <button type="submit" [className]="!registerForm.valid ? 'disabled' : ''" [disabled]="!registerForm.valid">Register</button>
         </div>
     </form>
 </div>

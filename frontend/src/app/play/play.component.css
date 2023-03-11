@@ -1,0 +1,198 @@
+.play {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    color: #f6f6f6;
+}
+.play .show-if-full {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.play .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+}
+.play .content h4, .play .content h3 {
+    margin: 0;
+}
+.play .content span.guessCounter {
+    color: #cc3300;
+}
+.play .content em {
+    color: #0096bf;
+}
+.play .content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    padding-bottom: 0;
+    margin-top: 30px;
+}
+.play .content form .input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.play .content form input[type="text"] {
+    width: 30%;
+    min-width: 250px;
+    font-size: 18px;
+    height: 22px;
+    padding: 5px 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+}
+.play .content form .input-wrapper button[type="submit"] {
+    min-width: 60px;
+    width: 5%;
+    font-size: 18px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 32px;
+    padding: 5px 15px;
+    border: none;
+    background-color: #3995db;
+    color: #fff;
+    cursor: pointer;
+}
+.play .content .dropdown {
+    z-index: 10;
+    min-width: 400px;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 5px;
+    max-height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* Scrollbar Styles for Mozilla (Literally only Firefox) */
+    scrollbar-width: thin;
+    scrollbar-color: #8d8d8d #ccc;
+    scroll-behavior: smooth;
+}
+/* Scrollbar Styles for Webkit (Literally everything else) */
+.play .content .dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.play .content .dropdown::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+  
+.play .content .dropdown::-webkit-scrollbar-thumb {
+    background-color: #8d8d8d;
+    border-radius: 6px;
+}
+.play .content .dropdown .item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: gainsboro;
+    color: #0f0f0f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.play .content .guesses {
+    margin-top: 40px;
+    padding: 20px 0;
+    width: 1152px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.play .content .guesses .guess {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.play .content .guesses .guess.for {
+    font-size: 18px;
+    font-weight: bold;
+}
+.play .content .guesses .guess .column {
+    width: 14%;
+    max-width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.play .content .guesses .guess .column img {
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid gainsboro;
+}
+.play .content .showResult {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.play .content .showResult .card {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: gainsboro;
+}
+.play .content .showResult .card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 100px;
+    border: 1px solid #32ad32;
+}
+.play .content .showResult h5.share {
+    cursor: pointer;
+    color: #00c8ff;
+    transition: .2s ease-in-out;
+}
+.play .content .showResult h5.share:hover {
+    color: #00a8ff;
+}
+
+@media (max-width: 1152px) {
+    .play .content .guesses {
+        width: 100%;
+    }
+    .play .content .guesses .guess .column {
+        width: 14%;
+        height: 80px;
+        font-size: 12px;
+    }
+}
